@@ -1,115 +1,43 @@
 
-const API_URL = "http://localhost:3005/api";
+const editButton = document.getElementById("edit-button");
 
-// ELEMENTS
+editButton.addEventListener("click", () => {
 
-const userName = document.getElementById("user-name");
-const userAvatar = document.getElementById("user-avatar");
+    const firstName = prompt("Enter your first name:");
 
-const profileName = document.getElementById("profile-name");
-const profileEmail = document.getElementById("profile-email");
-const profileRole = document.getElementById("profile-role");
-const profileAvatar = document.getElementById("profile-avatar");
-
-const logoutButton = document.getElementById("logout-button");
-
-// GET USER PROFILE
-
-async function loadUserProfile() {
-
-    const token = localStorage.getItem("token");
-
-    if (!token) {
-        window.location.href = "login.html";
+    if (firstName === null || firstName.trim() === "") {
         return;
     }
 
-    try {
+    const lastName = prompt("Enter your last name:");
 
-        const response = await fetch(`${API_URL}/profile`, {
-
-            method: "GET",
-
-            headers: {
-                Authorization: `Bearer ${token}`
-            }
-
-        });
-
-        const data = await response.json();
-
-        if (!response.ok) {
-            throw new Error(data.message || "Profile error");
-        }
-
-        const user = data.user;
-
-        // USER INFORMATION
-
-        const fullName = user.name || "Usuario";
-
-        const firstName = fullName.trim().split(/\s+/)[0];
-
-        const email = user.email || "";
-
-        const role = user.role || "user";
-
-        // GET INITIALS
-
-        const initials = fullName
-            .trim()
-            .split(/\s+/)
-            .map(word => word.charAt(0))
-            .slice(0, 2)
-            .join("")
-            .toUpperCase();
-
-        // TOPBAR
-
-        userName.textContent = firstName;
-
-        userAvatar.textContent = initials;
-
-        // PROFILE CARD
-
-        profileName.textContent = fullName;
-
-        profileEmail.textContent = email;
-
-        profileRole.textContent = role.toUpperCase();
-
-        profileAvatar.textContent = initials;
-
-    } catch (error) {
-
-        console.error("Profile error:", error);
-
-        userName.textContent = "Error";
-        profileName.textContent = "No se pudo cargar el perfil";
-        profileEmail.textContent = "";
+    if (lastName === null || lastName.trim() === "") {
+        return;
     }
-}
 
-// LOGOUT
+    const email = prompt("Enter your email:");
 
-function logout() {
-
-    const confirmLogout = confirm(
-        "¿Estás seguro de que quieres cerrar sesión?"
-    );
-
-    if (confirmLogout) {
-
-        localStorage.removeItem("token");
-
-        window.location.href = "login.html";
+    if (email === null || email.trim() === "") {
+        return;
     }
-}
 
-// EVENTS
+    document.getElementById("first-name").textContent = firstName;
+    document.getElementById("last-name").textContent = lastName;
+    document.getElementById("email").textContent = email;
 
-logoutButton.addEventListener("click", logout);
+    document.querySelector(".profile-details h2").textContent =
+        `${firstName} ${lastName}`;
 
-// START
+    document.querySelector(".profile-details p").textContent = email;
 
-loadUserProfile();
+    const initials = (
+        firstName.charAt(0) + lastName.charAt(0)
+    ).toUpperCase();
+
+    document.querySelector(".profile-avatar").textContent = initials;
+    document.querySelector(".avatar").textContent = initials;
+
+    document.querySelector(".user-info h3").textContent = firstName;
+
+    alert("Profile updated successfully!");
+});

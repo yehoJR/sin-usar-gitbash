@@ -1,12 +1,12 @@
 
 <!DOCTYPE html>
-<html lang="es">
+<html lang="en">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>Mi perfil</title>
+    <title>My Profile</title>
 
     <link rel="stylesheet" href="style.css">
 </head>
@@ -14,33 +14,97 @@
 <body>
 
     <header class="topbar">
-        <h2 class="logo">Compralia</h2>
+
+        <div class="logo">
+            <div class="logo-symbol">C</div>
+            <h2>Compralia</h2>
+        </div>
 
         <div class="user-menu">
-            <div class="avatar" id="user-avatar">U</div>
+
+            <div class="avatar">CM</div>
 
             <div class="user-info">
-                <span class="welcome">Bienvenido</span>
-                <h3 id="user-name">Cargando...</h3>
+                <span>Welcome back</span>
+                <h3>Carlos</h3>
             </div>
 
-            <button id="logout-button">Salir</button>
+            <button class="dropdown-button">▼</button>
+
         </div>
+
     </header>
 
-    <main class="profile-container">
+
+    <main class="container">
+
+        <div class="page-header">
+            <h1>My Profile</h1>
+            <p>Manage your personal information.</p>
+        </div>
+
 
         <section class="profile-card">
 
-            <div class="profile-avatar" id="profile-avatar">
-                U
+            <div class="profile-header">
+
+                <div class="profile-avatar">CM</div>
+
+                <div class="profile-details">
+                    <h2>Carlos Martinez</h2>
+                    <p>carlos@example.com</p>
+                    <span class="account-status">Active Account</span>
+                </div>
+
+                <button class="edit-button" id="edit-button">
+                    Edit Profile
+                </button>
+
             </div>
 
-            <h1 id="profile-name">Cargando usuario...</h1>
 
-            <p id="profile-email">Cargando email...</p>
+            <div class="divider"></div>
 
-            <span class="role" id="profile-role">Usuario</span>
+
+            <div class="information">
+
+                <h3>Personal Information</h3>
+
+                <div class="info-grid">
+
+                    <div class="info-item">
+                        <label>First Name</label>
+                        <p id="first-name">Carlos</p>
+                    </div>
+
+                    <div class="info-item">
+                        <label>Last Name</label>
+                        <p id="last-name">Martinez</p>
+                    </div>
+
+                    <div class="info-item">
+                        <label>Email Address</label>
+                        <p id="email">carlos@example.com</p>
+                    </div>
+
+                    <div class="info-item">
+                        <label>Phone Number</label>
+                        <p id="phone">+1 555 123 4567</p>
+                    </div>
+
+                    <div class="info-item">
+                        <label>Country</label>
+                        <p id="country">United States</p>
+                    </div>
+
+                    <div class="info-item">
+                        <label>Account Type</label>
+                        <p>Customer</p>
+                    </div>
+
+                </div>
+
+            </div>
 
         </section>
 
